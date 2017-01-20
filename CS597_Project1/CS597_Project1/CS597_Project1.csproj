@@ -106,11 +106,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TotalDue.aspx" />
     <Content Include="TrainingHeartRate.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TotalDue.aspx.cs">
+      <DependentUpon>TotalDue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TotalDue.aspx.designer.cs">
+      <DependentUpon>TotalDue.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TrainingHeartRate.aspx.cs">
       <DependentUpon>TrainingHeartRate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
