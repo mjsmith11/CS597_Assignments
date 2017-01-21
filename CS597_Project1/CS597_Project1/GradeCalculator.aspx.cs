@@ -72,6 +72,11 @@ namespace CS597_Project1
             }
         }
 
+        /// <summary>
+        /// Convert a percentage grade to a letter grade
+        /// </summary>
+        /// <param name="score">Grade represented as a percentage</param>
+        /// <returns>Letter grade</returns>
         public string getLetter(double score)
         {
             if (score >= 93)
