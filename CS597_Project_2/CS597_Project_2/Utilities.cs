@@ -60,6 +60,38 @@ namespace CS597_Project_2
 
             return value;
         }
+
+        /// <summary>
+        /// Parses the value of a textbox for a double value that is between 0 and max inclusive
+        /// </summary>
+        /// <param name="tbx">TextBox Control</param>
+        /// <param name="max">Maximum Valid Value</param>
+        /// <returns>The int value from the control if it is non-negative
+        ///          -1 if the value cannot be parsed as a int
+        ///          -2 if the value is negative
+        ///          -3 if the value is too large</returns>
+        public static double getNonNegativeDoubleWithMax(TextBox tbx,double max)
+        {
+            double value;
+            try
+            {
+                value = Double.Parse(tbx.Text);
+            }
+            catch (FormatException e)
+            {
+                return -1;
+            }
+            if (value < 0)
+            {
+                return -2;
+            }
+            else if(value>max)
+            {
+                return -3;
+            }
+
+            return value;
+        }
     }
     
 }

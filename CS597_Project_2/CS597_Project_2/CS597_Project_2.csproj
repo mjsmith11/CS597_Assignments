@@ -106,10 +106,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ParkingGarageCharges.aspx" />
     <Content Include="RentalCarCharges.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ParkingGarageCharges.aspx.cs">
+      <DependentUpon>ParkingGarageCharges.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ParkingGarageCharges.aspx.designer.cs">
+      <DependentUpon>ParkingGarageCharges.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentalCarCharges.aspx.cs">
       <DependentUpon>RentalCarCharges.aspx</DependentUpon>

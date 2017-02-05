@@ -19,6 +19,7 @@ namespace CS597_Project_2
             double price,cost;
             int days;
             price = Utilities.getNonNegativeDouble(ddlType);
+            //This works under the assumption that cars are rented in whole days
             days = Utilities.getNonNegativeInt(tbxDays);
 
             if(price<0)
@@ -32,7 +33,7 @@ namespace CS597_Project_2
             else
             {
                 cost = price * days;
-                tbxCharges.Text = cost.ToString();
+                tbxCharges.Text = cost.ToString("C");
             }
 
         }
