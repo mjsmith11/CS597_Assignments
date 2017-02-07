@@ -21,7 +21,7 @@ namespace CS597_Project_2
             double cost;
             double roundedHours;
 
-            hours = Utilities.getNonNegativeDoubleWithMax(tbxHours, MAX_HOURS_PARKED);
+            hours = Utilities.GetNonNegativeDoubleWithMax(tbxHours, MAX_HOURS_PARKED);
 
             if (hours > 0)
             {

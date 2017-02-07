@@ -18,9 +18,9 @@ namespace CS597_Project_2
         {
             double price,cost;
             int days;
-            price = Utilities.getNonNegativeDouble(ddlType);
+            price = Utilities.GetNonNegativeDouble(ddlType);
             //This works under the assumption that cars are rented in whole days
-            days = Utilities.getNonNegativeInt(tbxDays);
+            days = Utilities.GetNonNegativeInt(tbxDays);
 
             if(price<0)
             {

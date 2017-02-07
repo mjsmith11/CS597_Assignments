@@ -106,9 +106,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Students.mdb" />
     <Content Include="ParkingGarageCharges.aspx" />
     <Content Include="RentalCarCharges.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="SearchByAreaCode.aspx" />
+    <Content Include="SearchByClass.aspx" />
+    <Content Include="SearchByGPA.aspx" />
+    <Content Include="SearchByMajor.aspx" />
+    <Content Include="SearchByState.aspx" />
+    <Content Include="StateSearch.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ParkingGarageCharges.aspx.cs">
@@ -126,8 +135,51 @@
     <Compile Include="RentalCarCharges.aspx.designer.cs">
       <DependentUpon>RentalCarCharges.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SearchByAreaCode.aspx.cs">
+      <DependentUpon>SearchByAreaCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchByAreaCode.aspx.designer.cs">
+      <DependentUpon>SearchByAreaCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchByClass.aspx.cs">
+      <DependentUpon>SearchByClass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchByClass.aspx.designer.cs">
+      <DependentUpon>SearchByClass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchByGPA.aspx.cs">
+      <DependentUpon>SearchByGPA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchByGPA.aspx.designer.cs">
+      <DependentUpon>SearchByGPA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchByMajor.aspx.cs">
+      <DependentUpon>SearchByMajor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchByMajor.aspx.designer.cs">
+      <DependentUpon>SearchByMajor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchByState.aspx.cs">
+      <DependentUpon>SearchByState.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchByState.aspx.designer.cs">
+      <DependentUpon>SearchByState.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StateSearch.aspx.cs">
+      <DependentUpon>StateSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StateSearch.aspx.designer.cs">
+      <DependentUpon>StateSearch.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Utilities.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
