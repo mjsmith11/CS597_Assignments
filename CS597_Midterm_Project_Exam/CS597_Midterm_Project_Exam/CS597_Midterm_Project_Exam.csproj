@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Administrator.aspx" />
     <Content Include="Developer.aspx" />
     <Content Include="Manager.aspx" />
     <Content Include="packages.config" />
@@ -118,6 +119,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrator.aspx.cs">
+      <DependentUpon>Administrator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator.aspx.designer.cs">
+      <DependentUpon>Administrator.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Developer.aspx.cs">
       <DependentUpon>Developer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
