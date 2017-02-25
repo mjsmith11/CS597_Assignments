@@ -33,6 +33,11 @@
         <br />
         <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
     
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+    
     </div>
     </form>
 </body>

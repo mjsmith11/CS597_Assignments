@@ -28,6 +28,11 @@
         <br />
         <asp:Button ID="btnFixed" runat="server" Text="Fixed" OnClick="btnFixed_Click" />
     
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+    
     </div>
     </form>
 </body>

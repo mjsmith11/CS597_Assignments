@@ -47,6 +47,11 @@
         </tr></table>
         <asp:Label ID="lblFeedback" runat="server" Text=""></asp:Label>
     
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+    
     </div>
     </form>
 </body>

@@ -15,11 +15,13 @@ namespace CS597_Midterm_Project_Exam
         {
             if (Session["UserID"] == null || Session["UserType"] == null)
             {
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
                 return;
             }
             else if (!Session["UserType"].Equals("Manager"))
             {
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
                 return;
             }
@@ -52,6 +54,7 @@ namespace CS597_Midterm_Project_Exam
                 }
                 catch(Exception ex)
                 {
+                    Session.Abandon();
                     Response.Redirect("Login.aspx");
                     return;
                 }
@@ -67,7 +70,15 @@ namespace CS597_Midterm_Project_Exam
 
             lblFeedback.Text = "";
             developerID = Int32.Parse(ddlDeveloper.SelectedValue);
-            bugID = Int32.Parse(ddlBug.SelectedValue);
+            try
+            {
+                bugID = Int32.Parse(ddlBug.SelectedValue);
+            }
+            catch(FormatException ex)
+            {
+                lblFeedback.Text = "No Bug to Assign";
+                return;
+            }
 
             try
             {
@@ -82,12 +93,34 @@ namespace CS597_Midterm_Project_Exam
             }
             catch(Exception ex)
             {
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
                 return;
             }
 
             lblFeedback.Text = ddlBug.SelectedItem.Text + " assigned to " + ddlDeveloper.SelectedItem.Text;
 
+            try
+            {
+                ddlBug.Items.Clear();
+                OleDbHandler db = new OleDbHandler("MidTermCS");
+                db.CreateCommand("SELECT Subject,BugID FROM Bugs WHERE Status='Open'");
+                db.OpenConnection();
+                OleDbDataReader rdr = db.GetDataReader();
+                while (rdr.Read())
+                {
+                    ddlBug.Items.Add(new ListItem(rdr["Subject"].ToString(), rdr["BugID"].ToString()));
+                }
+
+                rdr.Close();
+                db.CloseConnection();
+            }
+            catch(Exception ex)
+            {
+                Session.Abandon();
+                Response.Redirect("Login.aspx");
+                return;
+            }
 
         }
 
@@ -107,9 +140,16 @@ namespace CS597_Midterm_Project_Exam
             }
             catch(Exception ex)
             {
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
                 return;
             }
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("Login.aspx");
         }
     }
 }

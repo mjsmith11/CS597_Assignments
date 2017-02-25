@@ -17,10 +17,12 @@ namespace CS597_Midterm_Project_Exam
             if (Session["UserID"] == null || Session["UserType"] == null)
             {
                 Response.Redirect("Login.aspx");
+                Session.Abandon();
                 return;
             }
             else if (!Session["UserType"].Equals("Administrator"))
             {
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
                 return;
             }
@@ -72,6 +74,7 @@ namespace CS597_Midterm_Project_Exam
             }
             catch (Exception ex)
             {
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
                 return;
             }
@@ -106,8 +109,8 @@ namespace CS597_Midterm_Project_Exam
             }
             hashedPassword = strBuilder.ToString();
 
-            //try
-            //{
+            try
+            {
                 OleDbHandler db1 = new OleDbHandler("MidTermCS");
                 db1.CreateCommand("INSERT INTO Users (UserID, Name, Login, [Password], Type) VALUES (@u, @n, @l, @p, @t)");
                 db1.AddParameter("@u", userID);
@@ -118,12 +121,13 @@ namespace CS597_Midterm_Project_Exam
                 db1.OpenConnection();
                 retVal = db1.ExecuteNonQuery();
                 db1.CloseConnection();
-            /*}
+            }
             catch(Exception ex)
             {
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
                 return;
-            }*/
+            }
             tbxName.Text = "";
             tbxLogin.Text = "";
             tbxPassword.Text = "";
@@ -133,6 +137,13 @@ namespace CS597_Midterm_Project_Exam
             {
                 lblFeedback.Text = "User " + name + " Added.";
             }
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("Login.aspx");
+
         }
     }
 }

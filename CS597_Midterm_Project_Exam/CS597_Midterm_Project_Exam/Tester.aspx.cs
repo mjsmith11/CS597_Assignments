@@ -14,10 +14,12 @@ namespace CS597_Midterm_Project_Exam
         {
             if(Session["UserID"]==null || Session["UserType"]==null)
             {
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
             }
             else if(!Session["UserType"].Equals("Tester"))
             {
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
             }
         }
@@ -48,6 +50,7 @@ namespace CS597_Midterm_Project_Exam
             }
             catch(Exception ex)
             {
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
                 return;
             }
@@ -74,6 +77,7 @@ namespace CS597_Midterm_Project_Exam
             }
             catch(Exception ex)
             {
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
                 return;
             }
@@ -83,6 +87,12 @@ namespace CS597_Midterm_Project_Exam
             ddlPriority.SelectedIndex = 0;
             tbxDescription.Text = "";
 
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("Login.aspx");
         }
     }
 }

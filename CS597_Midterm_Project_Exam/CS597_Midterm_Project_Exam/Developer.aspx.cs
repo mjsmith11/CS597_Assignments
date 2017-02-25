@@ -14,11 +14,13 @@ namespace CS597_Midterm_Project_Exam
         {
             if (Session["UserID"] == null || Session["UserType"] == null)
             {
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
                 return;
             }
             else if (!Session["UserType"].Equals("Developer"))
             {
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
                 return;
             }
@@ -46,6 +48,7 @@ namespace CS597_Midterm_Project_Exam
             }
             catch (Exception ex)
             {
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
                 return;
             }
@@ -66,6 +69,7 @@ namespace CS597_Midterm_Project_Exam
             }
             catch (Exception ex)
             {
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
                 return;
             }
@@ -76,6 +80,12 @@ namespace CS597_Midterm_Project_Exam
             ddlBug.DataTextField = "Subject";
             ddlBug.DataValueField = "BugID";
             ddlBug.DataBind();
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("Login.aspx");
         }
     }
 }
