@@ -23,20 +23,29 @@ namespace CS597_Midterm_Project_Exam
             string passwordFromDatabase = "";
             string userType = "";
 
-            OleDbHandler db = new OleDbHandler("MidTermCS");
-            db.CreateCommand("SELECT Password,UserID,Type FROM Users WHERE Login = @L");
-            db.AddParameter("@L", tbxUsername.Text);
-            db.OpenConnection();
-            OleDbDataReader rdr = db.GetDataReader();
-            while(rdr.Read())
+            lblError.Text = "";
+            try
             {
-                passwordFromDatabase = rdr["Password"].ToString();
-                userId = Int32.Parse(rdr["userID"].ToString());
-                userType = rdr["Type"].ToString();
-            }
+                OleDbHandler db = new OleDbHandler("MidTermCS");
+                db.CreateCommand("SELECT Password,UserID,Type FROM Users WHERE Login = @L");
+                db.AddParameter("@L", tbxUsername.Text);
+                db.OpenConnection();
+                OleDbDataReader rdr = db.GetDataReader();
+                while (rdr.Read())
+                {
+                    passwordFromDatabase = rdr["Password"].ToString();
+                    userId = Int32.Parse(rdr["userID"].ToString());
+                    userType = rdr["Type"].ToString();
+                }
 
-            rdr.Close();
-            db.CloseConnection();
+                rdr.Close();
+                db.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = "There was an error communicating with the database.";
+                return;
+            }
 
             string passwordFromUser = tbxPassword.Text;
 
@@ -53,11 +62,28 @@ namespace CS597_Midterm_Project_Exam
 
             if (hashedPasswordFromUser.Equals(passwordFromDatabase))
             {
-                //set some session vars and redirect them
+                Session["UserID"] = userId;
+                Session["UserType"] = userType;
+                if(userType.Equals("Tester"))
+                {
+                    Response.Redirect("Tester.aspx");
+                }
+                else if(userType.Equals("Manager"))
+                {
+                    Response.Redirect("Manager.aspx");
+                }
+                else if(userType.Equals("Developer"))
+                {
+                    Response.Redirect("Developer.aspx");
+                }
+                else if(userType.Equals("Administrator"))
+                {
+                    Response.Redirect("Administrator.aspx");
+                }
             }
             else
             {
-                //give them a message that something is wrong. Be sure to clear it at the top
+                lblError.Text = "Invalid Username or Password";
             }
         }
     }
