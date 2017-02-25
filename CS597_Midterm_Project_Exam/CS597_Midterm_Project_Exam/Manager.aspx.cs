@@ -29,7 +29,7 @@ namespace CS597_Midterm_Project_Exam
                 try
                 {
                     OleDbHandler db = new OleDbHandler("MidTermCS");
-                    db.CreateCommand("SELECT Subject,BugID FROM Bugs");
+                    db.CreateCommand("SELECT Subject,BugID FROM Bugs WHERE Status='Open'");
                     db.OpenConnection();
                     OleDbDataReader rdr = db.GetDataReader();
                     while(rdr.Read())
@@ -72,8 +72,9 @@ namespace CS597_Midterm_Project_Exam
             try
             {
                 OleDbHandler db = new OleDbHandler("MidTermCS");
-                db.CreateCommand("UPDATE Bugs SET AssignedTo=@d WHERE BugID=@b");
+                db.CreateCommand("UPDATE Bugs SET AssignedTo=@d,Status=@s WHERE BugID=@b");
                 db.AddParameter("@d", developerID);
+                db.AddParameter("@s", "Assigned");
                 db.AddParameter("@b", bugID);
                 db.OpenConnection();
                 retVal = db.ExecuteNonQuery();
@@ -98,7 +99,7 @@ namespace CS597_Midterm_Project_Exam
             try
             {
                 OleDbHandler db = new OleDbHandler("MidTermCS");
-                db.CreateCommand("SELECT * FROM Bugs WHERE BugID=@b");
+                db.CreateCommand("SELECT BugID, EnteredBy, Subject, Priority, Description FROM Bugs WHERE BugID=@b");
                 db.AddParameter("@b", bugID);
                 DataTable dt = db.ExecuteDataAdapterQuery();
                 dvBugDisplay.DataSource = dt;
@@ -107,6 +108,7 @@ namespace CS597_Midterm_Project_Exam
             catch(Exception ex)
             {
                 Response.Redirect("Login.aspx");
+                return;
             }
         }
     }

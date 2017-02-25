@@ -18,7 +18,7 @@
         <br />
         <br />
         <asp:Label ID="lblPassword" runat="server" Text="Password"></asp:Label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="tbxPassword" runat="server" TextMode="Password"></asp:TextBox>
         <br />
         <br />

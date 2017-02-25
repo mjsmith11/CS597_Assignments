@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Developer.aspx" />
     <Content Include="Manager.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -117,6 +118,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Developer.aspx.cs">
+      <DependentUpon>Developer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Developer.aspx.designer.cs">
+      <DependentUpon>Developer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Manager.aspx.cs">
       <DependentUpon>Manager.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
