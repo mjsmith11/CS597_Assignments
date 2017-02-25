@@ -33,6 +33,7 @@ namespace CS597_Midterm_Project_Exam
             string login = "";
             string hashedPassword = "";
             string type = "";
+            int retVal = -1;
 
             lblFeedback.Text = "";
 
@@ -105,25 +106,33 @@ namespace CS597_Midterm_Project_Exam
             }
             hashedPassword = strBuilder.ToString();
 
-            try
-            {
-                OleDbHandler db = new OleDbHandler("MidTermCS");
-                db.CreateCommand("INSERT INTO Users (UserID, Name, Login, Password, Type) VALUES (@u, @n, @l, @p, @t)");
-                db.AddParameter("@u", userID);
-                db.AddParameter("@n", name);
-                db.AddParameter("@l", login);
-                db.AddParameter("@p", hashedPassword);
-                db.AddParameter("@t", type);
-            }
+            //try
+            //{
+                OleDbHandler db1 = new OleDbHandler("MidTermCS");
+                db1.CreateCommand("INSERT INTO Users (UserID, Name, Login, [Password], Type) VALUES (@u, @n, @l, @p, @t)");
+                db1.AddParameter("@u", userID);
+                db1.AddParameter("@n", name);
+                db1.AddParameter("@l", login);
+                db1.AddParameter("@p", hashedPassword);
+                db1.AddParameter("@t", type);
+                db1.OpenConnection();
+                retVal = db1.ExecuteNonQuery();
+                db1.CloseConnection();
+            /*}
             catch(Exception ex)
             {
                 Response.Redirect("Login.aspx");
                 return;
-            }
+            }*/
             tbxName.Text = "";
             tbxLogin.Text = "";
             tbxPassword.Text = "";
             ddlType.SelectedIndex = 0;
+
+            if (retVal == 1)
+            {
+                lblFeedback.Text = "User " + name + " Added.";
+            }
         }
     }
 }
