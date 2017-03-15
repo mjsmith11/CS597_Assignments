@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml;
 namespace WebApplication1
 {
     public partial class Forecast : System.Web.UI.Page
@@ -16,18 +17,32 @@ namespace WebApplication1
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             lblErr.Text = "";
-            if (!validateZips(tbxZip.Text))
+            string zipCodes = tbxZip.Text;
+            string[] zipList = zipCodes.Split(' ');
+            if (!validateZips(zipList))
             {
                 lblErr.Text = "Please enter one or more zipcodes separated by spaces";
                 return;
             }
-            divForecast.InnerHtml = "<h3>"+getLatLong(tbxZip.Text) + "</h3>";
+           
+           string[] locationArray = getLatLon(zipCodes);
+
+            //at this point elements of zipList and locationArray with the same index represent the same location
+            noaa.ndfdXML weather = new noaa.ndfdXML();
+            foreach (string location in locationArray)
+            {
+                string[] latLon = location.Split(',');
+                string lat = latLon[0];
+                string lon = latLon[1];
+
+                string result = weather.NDFDgenByDay(decimal.Parse(lat), decimal.Parse(lon),DateTime.Today, "5", noaa.unitType.e, noaa.formatType.Item24hourly);
+                divForecast.InnerHtml += result;
+            }
+
         }
 
-        private bool validateZips(string zips)
+        private bool validateZips(string[] zipList)
         {
-            
-            String[] zipList = zips.Split(' ');
             foreach(string z in zipList)
             {
                 if(z.Length != 5)
@@ -45,15 +60,15 @@ namespace WebApplication1
             return true;
         }
 
-        private string getLatLong(string zips)
+        private string[] getLatLon(string zips)
         {
-            //NWS.ndfdXMLPortTypeClient weather = new NWS.ndfdXMLPortTypeClient();
-            //return weather.LatLonListZipCode(zips);
-            // return weather.NDFDgenByDay(Convert.ToDecimal(40.4755), Convert.ToDecimal(-86.1331), DateTime.Today, "5", NWS.unitType.e, NWS.formatType.Item12hourly);
-            //NWS.ndfdXML weather = new NWS.ndfdXML();
-            // return weather.NDFDgenByDay(86, 45, DateTime.Today, "5", NWS.unitType.e, NWS.formatType.Item24hourly);
             noaa.ndfdXML weather = new noaa.ndfdXML();
-            return weather.LatLonListZipCode(zips);
+            string xml = weather.LatLonListZipCode(zips);
+            XmlDocument weatherXml = new XmlDocument();
+            weatherXml.LoadXml(xml);
+            XmlNodeList latLon = weatherXml.GetElementsByTagName("latLonList");
+            string latLonList = latLon.Item(0).InnerText;
+            return latLonList.Split(' ');
         }
     }
 }

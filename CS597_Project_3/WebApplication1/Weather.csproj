@@ -104,7 +104,6 @@
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Service References\NWS\ndfdXML.wsdl" />
     <None Include="Web References\noaa\ndfdXML.wsdl" />
     <Content Include="Web References\noaa\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -119,17 +118,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Forecast.aspx" />
-    <None Include="Service References\NWS\configuration91.svcinfo" />
-    <None Include="Service References\NWS\configuration.svcinfo" />
-    <None Include="Service References\NWS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ForcastData.cs" />
     <Compile Include="Forecast.aspx.cs">
       <DependentUpon>Forecast.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -143,23 +137,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Service References\NWS\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Web References\noaa\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\NWS\" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
