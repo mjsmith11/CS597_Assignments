@@ -29,14 +29,16 @@ namespace WebApplication1
 
             //at this point elements of zipList and locationArray with the same index represent the same location
             noaa.ndfdXML weather = new noaa.ndfdXML();
-            foreach (string location in locationArray)
+            for (int i=0; i<locationArray.Length; i++)
             {
+                string location = locationArray[i];
                 string[] latLon = location.Split(',');
                 string lat = latLon[0];
                 string lon = latLon[1];
 
                 string result = weather.NDFDgenByDay(decimal.Parse(lat), decimal.Parse(lon),DateTime.Today, "5", noaa.unitType.e, noaa.formatType.Item24hourly);
                 divForecast.InnerHtml += result;
+                ForecastData5Day forecast = new ForecastData5Day(zipList[i], result);
             }
 
         }

@@ -123,7 +123,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ForcastData.cs" />
+    <Compile Include="ForcastData5Day.cs" />
     <Compile Include="Forecast.aspx.cs">
       <DependentUpon>Forecast.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
