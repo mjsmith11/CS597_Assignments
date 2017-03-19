@@ -13,7 +13,11 @@ namespace WebApplication1
         {
 
         }
-
+        /// <summary>
+        /// Validates the zip codes typed in, retrieves lat/lon for the zip codes, retrieves and displays a forecast for each lat/lon
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             lblErr.Text = "";
@@ -44,6 +48,11 @@ namespace WebApplication1
 
         }
 
+        /// <summary>
+        /// checks that each zip code is exactly 5 numeric digits
+        /// </summary>
+        /// <param name="zipList">array of zip codes to be checked</param>
+        /// <returns>true if all zips are valid and false if at least one zip is invalid</returns>
         private bool validateZips(string[] zipList)
         {
             foreach(string z in zipList)
@@ -63,6 +72,11 @@ namespace WebApplication1
             return true;
         }
 
+        /// <summary>
+        /// uses the noaa web service to convert zip codes to lat/lon
+        /// </summary>
+        /// <param name="zips">zip codes separated by spaces</param>
+        /// <returns>array of lat/lon pairs separated by commas</returns>
         private string[] getLatLon(string zips)
         {
             noaa.ndfdXML weather = new noaa.ndfdXML();

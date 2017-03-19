@@ -6,6 +6,11 @@ using System.Xml;
 
 namespace WebApplication1
 {
+    /// <summary>
+    /// This class contains data for high temperatures, low temperatures, descriptions, and graphics from the graphical.weather.gov/xml/ api.
+    /// It is coded for a 5 day forecast, but is designed to be adaptable to any length of forecast with minimal changes. It has a dependency
+    /// of the ForcastDay class also in this file and https://unpkg.com/purecss@0.6.2/build/pure-min.css
+    /// </summary>
     public class ForecastData5Day
     {
         const int NUM_DAYS = 5;
@@ -22,7 +27,11 @@ namespace WebApplication1
         private bool firstDayGraphic { get; set; }
 
 
-
+        /// <summary>
+        /// 2 argument constructor
+        /// </summary>
+        /// <param name="zip">zip code for the forecast</param>
+        /// <param name="xml">xml result of the NDFDgenByDay call</param>
         public ForecastData5Day(string zip, string xml)
         {
             this.zip = zip;
@@ -35,6 +44,11 @@ namespace WebApplication1
             forecast = new ForecastDay[NUM_DAYS];
             parseXmlToArray(xml);   
         }
+
+        /// <summary>
+        /// parses the provided xml and stores the data in the data members of this object
+        /// </summary>
+        /// <param name="xml">xml response from NDFDgenByDay</param>
         public void parseXmlToArray(string xml)
         {
             List<int> highs = new List<int>();
@@ -134,6 +148,14 @@ namespace WebApplication1
             createForecastDayArray(highs, lows, descriptions, graphics);
 
         }
+
+        /// <summary>
+        /// combines data into the forecast member of this class
+        /// </summary>
+        /// <param name="highs">List of high temperatures in chronological order</param>
+        /// <param name="lows">List of low temperatures in chronological order</param>
+        /// <param name="descriptions">List of weather descriptions in chronological order</param>
+        /// <param name="iconUrls">List of urls to weather graphics in chronological order</param>
         public void createForecastDayArray(List<int> highs, List<int> lows, List<string> descriptions, List<string> iconUrls)
         {
             //do first element separate
@@ -188,6 +210,10 @@ namespace WebApplication1
 
         }
 
+        /// <summary>
+        /// prepares the objects data for display in a browser formatted with https://unpkg.com/purecss@0.6.2/build/pure-min.css
+        /// </summary>
+        /// <returns>html representation of the weather forecast</returns>
         public string toHtml()
         {
             string html = "";
