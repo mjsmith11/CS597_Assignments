@@ -17,6 +17,7 @@ namespace WebApplication1
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             lblErr.Text = "";
+            divForecast.InnerHtml = "";
             string zipCodes = tbxZip.Text;
             string[] zipList = zipCodes.Split(' ');
             if (!validateZips(zipList))
@@ -37,8 +38,9 @@ namespace WebApplication1
                 string lon = latLon[1];
 
                 string result = weather.NDFDgenByDay(decimal.Parse(lat), decimal.Parse(lon),DateTime.Today, "5", noaa.unitType.e, noaa.formatType.Item24hourly);
-                divForecast.InnerHtml += result;
                 ForecastData5Day forecast = new ForecastData5Day(zipList[i], result);
+                divForecast.InnerHtml += forecast.toHtml();
+                divForecast.InnerHtml += result;
             }
 
         }

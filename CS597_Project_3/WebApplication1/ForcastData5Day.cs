@@ -187,14 +187,102 @@ namespace WebApplication1
 
 
         }
+
+        public string toHtml()
+        {
+            string html = "";
+            int start;
+            DateTime today = DateTime.Today;
+
+            html += ("<h3>" + this.zip + "</h3>");
+            html += "<table class=\"pure-table\" width=\"60%\">";
+
+            //headings
+            html += "<thead>";
+            html += "<tr>";
+            for (int i = 0; i < NUM_DAYS; i++)
+            {
+                html += ("<th width=\"20%\">" + today.DayOfWeek + "</th>");
+                today = today.AddDays(1);
+            }
+            html += "</tr>";
+            html += "</thead>";
+
+
+
+            html += "<tbody>";
+            //max temperatures
+            start = 0;
+            html += "<tr>";
+            if (!firstDayHigh)
+            {
+                html += "<td width=\"20%\">-</td>";
+                start = 1;
+            }
+
+            for(int i=start; i<forecast.Length; i++)
+            {
+                html += ("<td width=\"20%\">" + forecast[i].highTemp + "°</td>");
+            }
+            html += "</tr>";
+
+            //graphics
+            start = 0;
+            html += "<tr>";
+            if (!firstDayGraphic)
+            {
+                html += "<td width=\"20%\"></td>";
+                start = 1;
+            }
+
+            for (int i = start; i < forecast.Length; i++)
+            {
+                html += ("<td width=\"20%\"><img src=\""+forecast[i].graphicUrl+"\"></td>");
+            }
+            html += "</tr>";
+
+            //low temps
+            start = 0;
+            html += "<tr>";
+            if (!firstDayLow)
+            {
+                html += "<td width=\"20%\">-</td>";
+                start = 1;
+            }
+
+            for (int i = start; i < forecast.Length; i++)
+            {
+                html += ("<td width=\"20%\">" + forecast[i].lowTemp + "°</td>");
+            }
+            html += "</tr>";
+
+            //descriptions
+            start = 0;
+            html += "<tr>";
+            if (!firstDayDesc)
+            {
+                html += "<td width=\"20%\">-</td>";
+                start = 1;
+            }
+
+            for (int i = start; i < forecast.Length; i++)
+            {
+                html += ("<td width=\"20%\">" + forecast[i].description + "</td>");
+            }
+            html += "</tr>";
+
+            html += "</tbody>";
+            html += "</table>";
+            return html;
+        }
     }
 
     public class ForecastDay
     {
-        private int highTemp { get; set; }
-        private int lowTemp { get; set; }
-        private string graphicUrl { get; set; }
-        private string description { get; set; }
+        public int highTemp { get; set; }
+        public int lowTemp { get; set; }
+        public string graphicUrl { get; set; }
+        public string description { get; set; }
 
         public ForecastDay(int highTemp, int lowTemp, string description, string graphicUrl)
         {
