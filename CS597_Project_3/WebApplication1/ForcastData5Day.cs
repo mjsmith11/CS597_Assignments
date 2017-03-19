@@ -299,6 +299,7 @@ namespace WebApplication1
 
             html += "</tbody>";
             html += "</table>";
+            html += "<br/>";
             return html;
         }
     }
