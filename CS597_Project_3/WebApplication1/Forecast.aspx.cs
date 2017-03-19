@@ -40,7 +40,6 @@ namespace WebApplication1
                 string result = weather.NDFDgenByDay(decimal.Parse(lat), decimal.Parse(lon),DateTime.Today, "5", noaa.unitType.e, noaa.formatType.Item24hourly);
                 ForecastData5Day forecast = new ForecastData5Day(zipList[i], result);
                 divForecast.InnerHtml += forecast.toHtml();
-                divForecast.InnerHtml += result;
             }
 
         }
