@@ -15,7 +15,7 @@ namespace CS597_Project4
         /// Constructor
         /// </summary>
         /// <param name="sections">The scheduler will attempt to choose one course from each List<Course> in the outer list such that the times do not conflict.</param>
-        Scheduler(List<List<Course>> sections)
+        public Scheduler(List<List<Course>> sections)
         {
             this.sections = sections;
             this.schedule = new List<Course>();
