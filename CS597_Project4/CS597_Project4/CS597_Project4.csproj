@@ -79,6 +79,7 @@
       <DependentUpon>Courses.mdf</DependentUpon>
     </Content>
     <Content Include="CourseScheduler.aspx" />
+    <Content Include="StyleSheet1.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
