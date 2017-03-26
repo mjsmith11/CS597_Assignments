@@ -37,6 +37,30 @@ namespace CS597_Project4
 
         }
 
+        /// <summary>
+        /// The query result must contain CRN, CourseNumber, SectionNumber, Days, StartTime, and EndTime.
+        /// This method does not check this and will fail with an exception if any are missing
+        /// </summary>
+        /// <returns></returns>
+        public List<Course> ExecuteCourseListQuery()
+        {
+            DataTable qryResult = ExecuteDataAdapterQuery();
+            List<Course> result = new List<Course>();
+
+            foreach(DataRow dr in qryResult.Rows)
+            {
+                int CRN = Int32.Parse(dr["CRN"].ToString());
+                string courseNumber = dr["CourseNumber"].ToString();
+                string sectionNumber = dr["SectionNumber"].ToString();
+                string days = dr["Days"].ToString();
+                string startTime = dr["StartTime"].ToString();
+                string endTime = dr["EndTime"].ToString();
+
+                result.Add(new Course(CRN, courseNumber, sectionNumber, days, startTime, endTime));
+            }
+            return result;
+        }
+
         public void OpenConnection()
         {
             conn.Open();
