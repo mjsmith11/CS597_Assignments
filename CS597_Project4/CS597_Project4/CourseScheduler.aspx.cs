@@ -140,5 +140,66 @@ namespace CS597_Project4
 
             displaySelectedCourses();
         }
+
+        protected void btnSchedule_Click(object sender, EventArgs e)
+        {
+            DataTable selectedCourses = (DataTable)Session["selectedCourses"];
+            List<List<Course>> sectionsAvailable = new List<List<Course>>();
+            SQLServerHandler sql = new SQLServerHandler("CoursesCS");
+
+            foreach(DataRow dr in selectedCourses.Rows)
+            {
+                sql.CreateCommand("SELECT * FROM Schedule WHERE CourseNumber = @c");
+                sql.AddParameter("@c", dr["CourseNumber"].ToString());
+                sectionsAvailable.Add(sql.ExecuteCourseListQuery());
+            }
+
+            Scheduler s = new Scheduler(sectionsAvailable);
+            bool success = s.searchForSchedule();
+            if(success)
+            {
+                displaySchedule(s.schedule);
+            }
+            else
+            {
+                divSchedule.InnerHtml = "<h3>No schedule found.</h3>";
+            }
+            
+        }
+
+        protected void displaySchedule(List<Course> courses)
+        {
+            string html = "";
+            html += "<h3>Schedule</h3>";
+
+            html += "<table class=\"pure-table pure-table-horizontal\">";
+            html += "<thead>";
+            html += "<tr>";
+            html += "<th>CRN</th>";
+            html += "<th>Course Number</th>";
+            html += "<th>Section Number</th>";
+            html += "<th>Days</th>";
+            html += "<th>Start Time</th>";
+            html += "<th>End Time</th>";
+            html += "</tr>";
+            html += "</thead>";
+
+            html += "<tbody>";
+            foreach(Course c in courses)
+            {
+                html += "<tr>";
+                html += ("<td>" + c.CRN + "</td>");
+                html += ("<td>" + c.courseNumber + "</td>");
+                html += ("<td>" + c.sectionNumber + "</td>");
+                html += ("<td>" + c.days + "</td>");
+                html += ("<td>" + c.startTime + "</td>");
+                html += ("<td>" + c.endTime + "</td>");
+            }
+
+            html += "</tbody>";
+            html += "</table>";
+
+            divSchedule.InnerHtml = html;
+        }
     }
 }
