@@ -17,7 +17,7 @@
             <br />
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnAdd" runat="server" Text="Add" />
+            <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" style="height: 26px" />
             &nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnSchedule" runat="server" Text="Schedule" />
         </div>
