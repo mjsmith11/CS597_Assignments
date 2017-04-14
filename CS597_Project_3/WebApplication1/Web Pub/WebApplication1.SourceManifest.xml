@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\Matt\Source\Repos\CS597_Projects\CS597_Project_3\WebApplication1\obj\Release\Package\PackageTmp" />
+  <setAcl path="C:\Users\Matt\Source\Repos\CS597_Projects\CS597_Project_3\WebApplication1\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\Matt\Source\Repos\CS597_Projects\CS597_Project_3\WebApplication1\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

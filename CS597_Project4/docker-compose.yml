@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  cs597_project4:
+    image: cs597_project4
+    build:
+      context: .\CS597_Project4
+      dockerfile: Dockerfile
