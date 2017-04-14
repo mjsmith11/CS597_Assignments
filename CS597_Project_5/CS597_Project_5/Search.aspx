@@ -4,7 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Movie Search</title>
+    <link rel="stylesheet" type="text/css" href="StyleSheet1.css"/>
 </head>
 <body>
     <h1>Movie Search</h1>
@@ -18,9 +19,13 @@
         <br />
         <br />
         <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
-    
     </div>
-        <br />
-    <div id="divResults" runat="server"></div>
-</body>
+
+    <br />
+    </form>
+
+    <asp:BulletedList ID="blstResults" DisplayMode="HyperLink" runat="server">
+    </asp:BulletedList>
+
+    </body>
 </html>
