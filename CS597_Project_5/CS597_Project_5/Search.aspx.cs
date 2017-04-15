@@ -16,14 +16,40 @@ namespace CS597_Project_5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Request.QueryString["showLast"] != null && !IsPostBack)
+            {
+                runSearch(Session["lastSearch"].ToString());
+            }
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            runSearch(tbxTerm.Text);
+        }
+
+        private string buildRequestUrl(string term)
+        {
+            string stub = "http://www.omdbapi.com/";
+            string parms = "?s=" + Uri.EscapeDataString(term) + "&type=movie";
+            return stub + parms;
+        }
+
+        private void populateResults(SearchResult results)
+        {
+            foreach (Movie m in results.Search)
+            {
+                ListItem li = new ListItem();
+                li.Text = m.Title;
+                li.Value = "MovieDetails.aspx?id=" + m.ImdbID;
+                blstResults.Items.Add(li);
+            }
+        }
+
+        private void runSearch(string term)
+        {
             blstResults.Items.Clear();
 
-            string requestUrl = buildRequestUrl();
+            string requestUrl = buildRequestUrl(term);
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             StreamReader reader = new StreamReader(response.GetResponseStream());
@@ -35,24 +61,9 @@ namespace CS597_Project_5
             SearchResult results = (SearchResult)js.ReadObject(stream);
 
             populateResults(results);
+
+            Session["lastSearch"] = term;
         }
 
-        private string buildRequestUrl()
-        {
-            string stub = "http://www.omdbapi.com/";
-            string parms = "?s=" + Uri.EscapeDataString(tbxTerm.Text) + "&type=movie";
-            return stub + parms;
-        }
-
-        private void populateResults(SearchResult results)
-        {
-            foreach (Movie m in results.Search)
-            {
-                ListItem li = new ListItem();
-                li.Text = m.Title;
-                li.Value = "MovieDetails?id=" + m.ImdbID;
-                blstResults.Items.Add(li);
-            }
-        }
     }
 }

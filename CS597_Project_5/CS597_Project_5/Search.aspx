@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Movie Search</title>
-    <link rel="stylesheet" type="text/css" href="StyleSheet1.css"/>
 </head>
 <body>
     <h1>Movie Search</h1>
@@ -22,10 +21,9 @@
     </div>
 
     <br />
+    
+
+    <asp:BulletedList ID="blstResults" DisplayMode="HyperLink" runat="server"></asp:BulletedList>
     </form>
-
-    <asp:BulletedList ID="blstResults" DisplayMode="HyperLink" runat="server">
-    </asp:BulletedList>
-
     </body>
 </html>
