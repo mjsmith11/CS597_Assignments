@@ -13,7 +13,7 @@
     <p>
     @Html.Label("Select an Employee: ")
     &nbsp;&nbsp;
-    @Html.DropDownList("employee")
+    @Html.DropDownList("employee", (SelectList)ViewBag.employee, "---Select An Employee---",new { @onchange = "this.form.submit();" })
      </p>
 }
 </p>
