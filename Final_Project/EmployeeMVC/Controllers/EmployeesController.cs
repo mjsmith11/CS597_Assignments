@@ -15,7 +15,7 @@ namespace EmployeeMVC.Controllers
         private EmployeeDbContext db = new EmployeeDbContext();
 
         // GET: Employees
-        public ActionResult Index(string SearchBy, string SearchValue)
+        public ActionResult Index(string SearchBy, string SearchValue, string sortBy)
         {
             var searchTypes = new List<string>();
             searchTypes.Add("Last Name");
@@ -30,21 +30,42 @@ namespace EmployeeMVC.Controllers
             {
                 if(SearchBy.Equals("Last Name"))
                 {
-                    employees = employees.Where(s => s.LastName.Contains(SearchValue));
+                    employees = employees.Where(e => e.LastName.Contains(SearchValue));
                 }
                 else if(SearchBy.Equals("First Name"))
                 {
-                    employees = employees.Where(s => s.FirstName.Contains(SearchValue));
+                    employees = employees.Where(e => e.FirstName.Contains(SearchValue));
                 }
                 else if(SearchBy.Equals("Department"))
                 {
-                    employees = employees.Where(s => s.Department.Contains(SearchValue));
+                    employees = employees.Where(e => e.Department.Contains(SearchValue));
                 }
                 else if(SearchBy.Equals("Location"))
                 {
-                    employees = employees.Where(s => s.Location.Contains(SearchValue));
+                    employees = employees.Where(e => e.Location.Contains(SearchValue));
                 }
             }
+
+            if(!String.IsNullOrEmpty(sortBy))
+            {
+                if(sortBy.Equals("LastName"))
+                {
+                    employees = employees.OrderBy(e => e.LastName);
+                }
+                else if(sortBy.Equals("FirstName"))
+                {
+                    employees = employees.OrderBy(e => e.FirstName);
+                }
+                else if(sortBy.Equals("Department"))
+                {
+                    employees = employees.OrderBy(e => e.Department);
+                }
+                else if(sortBy.Equals("Performance"))
+                {
+                    employees = employees.OrderBy(e => e.Performance);
+                }
+            }
+
 
             return View(employees);
         }
