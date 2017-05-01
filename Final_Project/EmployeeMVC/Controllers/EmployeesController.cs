@@ -168,11 +168,9 @@ namespace EmployeeMVC.Controllers
         public ActionResult Select(string employee)
         {
             if(String.IsNullOrEmpty(employee))
-            {
-                var employees = from e in db.Employees select e;
-                var fullNames = from e in employees select new { fullName = e.FirstName + " " + e.LastName, id = e.EmployeeId.ToString() };
-
-                ViewBag.employee = new SelectList(fullNames, "id", "fullName");
+            { 
+                var ddlEmployees = from e in db.Employees select new { fullName = e.LastName + ", " + e.FirstName, id = e.EmployeeId.ToString() };
+                ViewBag.employee = new SelectList(ddlEmployees, "id", "fullName");
                 return View();
                 
             }
