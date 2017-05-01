@@ -167,7 +167,7 @@ namespace EmployeeMVC.Controllers
 
         public ActionResult Select(string employee)
         {
-            if(String.IsNullOrEmpty(employee))
+            if(String.IsNullOrEmpty(employee)) //This will be true for the "---Select An Employee---" option because the value is ""
             { 
                 var ddlEmployees = from e in db.Employees select new { fullName = e.LastName + ", " + e.FirstName, id = e.EmployeeId.ToString() };
                 ViewBag.employee = new SelectList(ddlEmployees, "id", "fullName");
