@@ -22,10 +22,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.ActionLink("Last Name", "Index", new { sortBy = "LastName"})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.ActionLink("First Name", "Index", new { sortBy = "FirstName" })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Salary)
@@ -34,13 +34,13 @@
             @Html.DisplayNameFor(model => model.Gender)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Department)
+            @Html.ActionLink("Department", "Index", new { sortBy = "Department" })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Location)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Performance)
+            @Html.ActionLink("Performance", "Index", new { sortBy = "Performance" })
         </th>
         <th></th>
     </tr>
