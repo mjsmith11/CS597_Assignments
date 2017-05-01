@@ -165,6 +165,23 @@ namespace EmployeeMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Select(string employee)
+        {
+            if(String.IsNullOrEmpty(employee))
+            {
+                var employees = from e in db.Employees select e;
+                var fullNames = from e in employees select new { fullName = e.FirstName + " " + e.LastName, id = e.EmployeeId.ToString() };
+
+                ViewBag.employee = new SelectList(fullNames, "id", "fullName");
+                return View();
+                
+            }
+            else
+            {
+                return RedirectToAction("Edit", new { id = Int32.Parse(employee) });
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
