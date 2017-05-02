@@ -110,6 +110,7 @@
     <Content Include="App_Data\ShoppingCart_log.ldf">
       <DependentUpon>ShoppingCart.mdf</DependentUpon>
     </Content>
+    <Content Include="ChooseQuantity.aspx" />
     <Content Include="CreateAccount.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Store.aspx" />
@@ -117,6 +118,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Book.cs" />
+    <Compile Include="CartItem.cs" />
+    <Compile Include="ChooseQuantity.aspx.cs">
+      <DependentUpon>ChooseQuantity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChooseQuantity.aspx.designer.cs">
+      <DependentUpon>ChooseQuantity.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CreateAccount.aspx.cs">
       <DependentUpon>CreateAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

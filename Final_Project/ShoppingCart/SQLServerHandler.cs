@@ -110,5 +110,28 @@ namespace ShoppingCart
             }
             return result;
         }
+
+        /// <summary>
+        /// The query result must all columns of the CartItem table
+        /// This method does not check this and will fail with an exception if any are missing
+        /// </summary>
+        /// <returns></returns>
+        public List<CartItem> ExecuteCartItemListQuery()
+        {
+            DataTable qryResult = ExecuteDataAdapterQuery();
+            List<CartItem> result = new List<CartItem>();
+
+            foreach (DataRow dr in qryResult.Rows)
+            {
+                CartItem ci = new CartItem();
+                ci.Id = Int32.Parse(dr["Id"].ToString());
+                ci.Book_Id = Int32.Parse(dr["Book_Id"].ToString());
+                ci.User_Id = Int32.Parse(dr["User_Id"].ToString());
+                ci.Quantity = Int32.Parse(dr["Quantity"].ToString());
+
+                result.Add(ci);
+            }
+            return result;
+        }
     }
 }
