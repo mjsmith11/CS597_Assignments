@@ -59,7 +59,7 @@ namespace ShoppingCart
                 db.AddParameter("@u", Session["UserID"]);
                 return db.ExecuteCartItemListQuery();
             }
-            catch
+            catch(Exception ex)
             {
                 Session.Abandon();
                 Response.Redirect("Login.aspx");
@@ -76,7 +76,7 @@ namespace ShoppingCart
                 db.AddParameter("@b", id);
                 return db.ExecuteBookListQuery()[0];
             }
-            catch
+            catch(Exception ex)
             {
                 Session.Abandon();
                 Response.Redirect("Login.aspx");
@@ -92,9 +92,11 @@ namespace ShoppingCart
                 db.CreateCommand("UPDATE Book SET NumInStock = @n WHERE BookId = @b");
                 db.AddParameter("@n", newInventory);
                 db.AddParameter("@b", bookId);
+                db.OpenConnection();
                 db.ExecuteNonQuery();
+                db.CloseConnection();
             }
-            catch
+            catch(Exception ex)
             {
                 Session.Abandon();
                 Response.Redirect("Login.aspx");
@@ -108,8 +110,11 @@ namespace ShoppingCart
                 SQLServerHandler db = new SQLServerHandler("FinalCS");
                 db.CreateCommand("DELETE FROM CartItem WHERE User_Id = @u");
                 db.AddParameter("@u", Session["UserID"]);
+                db.OpenConnection();
+                db.ExecuteNonQuery();
+                db.CloseConnection();
             }
-            catch
+            catch(Exception ex)
             {
                 Session.Abandon();
                 Response.Redirect("Login.aspx");
