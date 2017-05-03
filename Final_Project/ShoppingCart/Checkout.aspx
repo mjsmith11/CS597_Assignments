@@ -8,6 +8,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <h1>Checkout Complete</h1>
     <div>
         <asp:GridView ID="gvSummary" runat="server"></asp:GridView>
         <asp:Label ID="lblTotal" runat="server" Text=""></asp:Label>

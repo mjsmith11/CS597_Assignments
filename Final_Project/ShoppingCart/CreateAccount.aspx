@@ -7,6 +7,7 @@
     <title></title>
 </head>
 <body>
+    <h1>New Account Sign Up</h1>
     <form id="form1" runat="server">
     <div>
             <asp:Label ID="lblName" runat="server" Text="Name"></asp:Label>

@@ -149,6 +149,7 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseData.cs" />
     <Compile Include="SQLServerHandler.cs" />
     <Compile Include="Store.aspx.cs">
       <DependentUpon>Store.aspx</DependentUpon>

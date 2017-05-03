@@ -7,6 +7,7 @@
     <title></title>
 </head>
 <body>
+    <h1>Book Store</h1>
     <form id="form1" runat="server">
     <div>
         <!--This table isn't rendering correctly in visual studio, but it does render correctly in MS Edge and Chrome-->
