@@ -39,6 +39,9 @@
         <br />
         <asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="~/Cart.aspx">View Your Cart</asp:HyperLink>
     </div>
+        <br />
+        <br />
+        <asp:HyperLink ID="lnkLogout" runat="server" NavigateUrl="~/Logout.aspx">Logout</asp:HyperLink>
     </form>
 </body>
 </html>

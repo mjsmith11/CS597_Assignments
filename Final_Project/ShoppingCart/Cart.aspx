@@ -18,6 +18,9 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:HyperLink ID="lnkCheckout" runat="server" NavigateUrl="~/Checkout.aspx">Checkout</asp:HyperLink>
     </div>
+        <br />
+        <br />
+        <asp:HyperLink ID="lnkLogout" runat="server" NavigateUrl="~/Logout.aspx">Logout</asp:HyperLink>
     </form>
 </body>
 </html>

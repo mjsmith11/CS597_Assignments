@@ -12,7 +12,12 @@
     <div>
         <asp:GridView ID="gvSummary" runat="server"></asp:GridView>
         <asp:Label ID="lblTotal" runat="server" Text=""></asp:Label>
+        <br />
+        <asp:HyperLink ID="lnkStore" runat="server" NavigateUrl="~/Store.aspx">Return to Store</asp:HyperLink>
     </div>
+        <br />
+        <br />
+        <asp:HyperLink ID="lnkLogout" runat="server" NavigateUrl="~/Logout.aspx">Logout</asp:HyperLink>
     </form>
 </body>
 </html>
