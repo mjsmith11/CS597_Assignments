@@ -10,7 +10,7 @@
 namespace ShoppingCart {
     
     
-    public partial class Store {
+    public partial class Cart {
         
         /// <summary>
         /// form1 control.
@@ -22,57 +22,30 @@ namespace ShoppingCart {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// lblBook control.
+        /// lblMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBook;
+        protected global::System.Web.UI.WebControls.Label lblMsg;
         
         /// <summary>
-        /// lblQty control.
+        /// gvCartContents control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblQty;
+        protected global::System.Web.UI.WebControls.GridView gvCartContents;
         
         /// <summary>
-        /// ddlBooks control.
+        /// lnkContinue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBooks;
-        
-        /// <summary>
-        /// ddlQty control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlQty;
-        
-        /// <summary>
-        /// btnAddToCart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddToCart;
-        
-        /// <summary>
-        /// lnkCart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkCart;
+        protected global::System.Web.UI.WebControls.HyperLink lnkContinue;
     }
 }

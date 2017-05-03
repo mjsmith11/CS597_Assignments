@@ -35,6 +35,8 @@
                 </td>
         </tr>
     </table>
+        <br />
+        <asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="~/Cart.aspx">View Your Cart</asp:HyperLink>
     </div>
     </form>
 </body>

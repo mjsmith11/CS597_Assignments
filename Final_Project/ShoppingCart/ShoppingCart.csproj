@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Cart.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -110,7 +111,6 @@
     <Content Include="App_Data\ShoppingCart_log.ldf">
       <DependentUpon>ShoppingCart.mdf</DependentUpon>
     </Content>
-    <Content Include="ChooseQuantity.aspx" />
     <Content Include="CreateAccount.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Store.aspx" />
@@ -118,14 +118,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Book.cs" />
-    <Compile Include="CartItem.cs" />
-    <Compile Include="ChooseQuantity.aspx.cs">
-      <DependentUpon>ChooseQuantity.aspx</DependentUpon>
+    <Compile Include="Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ChooseQuantity.aspx.designer.cs">
-      <DependentUpon>ChooseQuantity.aspx</DependentUpon>
+    <Compile Include="Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CartItem.cs" />
     <Compile Include="CreateAccount.aspx.cs">
       <DependentUpon>CreateAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

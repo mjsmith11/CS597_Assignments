@@ -39,6 +39,7 @@ namespace ShoppingCart
                     return;
                 }
 
+                //it is possible for this data to go out of date, but that is ok since quantities are verified at checkout
                 var ddlData = from b in books select new { Display = b.BookName + " by " + b.Author + " - " + b.price.ToString("C", CultureInfo.CurrentCulture), Value = b.BookId };
                 ddlBooks.DataSource = ddlData;
                 ddlBooks.DataTextField = "Display";
@@ -51,8 +52,25 @@ namespace ShoppingCart
 
         protected void btnAddToCart_Click(object sender, EventArgs e)
         {
-            string target = "ChooseQuantity.aspx?bid=" + ddlBooks.SelectedValue;
-            Response.Redirect(target);
+            try
+            {
+                SQLServerHandler db = new SQLServerHandler("FinalCS");
+                db.CreateCommand("INSERT INTO CartItem(User_Id, Book_Id, Quantity) VALUES(@u, @b, @q)");
+                db.AddParameter("@u", Int32.Parse(Session["UserID"].ToString()));
+                db.AddParameter("@b", Int32.Parse(ddlBooks.SelectedValue.ToString()));
+                db.AddParameter("@q", Int32.Parse(ddlQty.SelectedValue.ToString()));
+                db.OpenConnection();
+                db.ExecuteNonQuery();
+                db.CloseConnection();
+            }
+            catch(Exception ex)
+            {
+                Response.Write(ex.Data);
+                Session.Abandon();
+                Response.Redirect("Login.aspx");
+                return;
+            }
+            Response.Redirect("Cart.aspx");
         }
 
         protected void updateQtyChoices()
