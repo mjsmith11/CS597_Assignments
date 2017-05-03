@@ -39,12 +39,14 @@ namespace ShoppingCart
             if (dt.Rows.Count == 0)
             {
                 lblMsg.Text = "Your Cart is Empty";
+                lnkCheckout.Visible = false;
             }
             else
             {
                 var data = from r in dt.AsEnumerable() select new { Title = r["BookName"].ToString(), Qty = r["Quantity"].ToString(), Price = Double.Parse(r["Price"].ToString()).ToString("C", CultureInfo.CurrentCulture), Total = (Int32.Parse(r["Quantity"].ToString()) * Double.Parse(r["Price"].ToString())).ToString("C",CultureInfo.CurrentCulture) };
                 gvCartContents.DataSource = data;
                 gvCartContents.DataBind();
+                lnkCheckout.Visible = true;
             }
             
         }

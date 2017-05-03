@@ -10,7 +10,7 @@
 namespace ShoppingCart {
     
     
-    public partial class Cart {
+    public partial class Checkout {
         
         /// <summary>
         /// form1 control.
@@ -22,39 +22,21 @@ namespace ShoppingCart {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// lblMsg control.
+        /// gvSummary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMsg;
+        protected global::System.Web.UI.WebControls.GridView gvSummary;
         
         /// <summary>
-        /// gvCartContents control.
+        /// lblTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCartContents;
-        
-        /// <summary>
-        /// lnkContinue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkContinue;
-        
-        /// <summary>
-        /// lnkCheckout control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkCheckout;
+        protected global::System.Web.UI.WebControls.Label lblTotal;
     }
 }

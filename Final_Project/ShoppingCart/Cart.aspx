@@ -14,6 +14,8 @@
 
         <br />
         <asp:HyperLink ID="lnkContinue" runat="server" NavigateUrl="~/Store.aspx">Continue Shopping</asp:HyperLink>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:HyperLink ID="lnkCheckout" runat="server" NavigateUrl="~/Checkout.aspx">Checkout</asp:HyperLink>
     </div>
     </form>
 </body>
